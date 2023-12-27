@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Sniper: Video 1</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #0056b3;
+        }
+        iframe {
+            width: 100%;
+            height: 450px; /* Adjust height as needed */
+            border: 2px solid #0056b3;
+            border-radius: 5px;
+        }
+    </style>
+    <script>
+        function getURLParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            var title = getURLParameter('title');
+            var id = getURLParameter('id');
+
+            if (title) {
+                document.title = title;
+                document.getElementById('videoTitle').innerText = title;
+            }
+
+            if (id) {
+                document.getElementById('videoFrame').src = `https://player.vimeo.com/video/${id}?autoplay=0&title=0`;
+            }
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1 id="videoTitle"></h1>
+        <iframe id="videoFrame" src="about:blank" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" 
+        mozallowfullscreen webkitallowfullscreen allowfullscreen title="Example video does not exist"/>
+        <!-- Replace the src attribute with the URL of your video or video platform -->
+    </div>
+</body>
+</html>
